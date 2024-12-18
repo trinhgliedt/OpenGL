@@ -1,0 +1,26 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+        {
+            "label": "Build and Run",
+            "type": "shell",
+            "command": "clang++",
+            "args": [
+                "-std=c++17",
+                "-g",
+                "main.cpp",
+                "-o",
+                "main",
+                "-lglfw",
+                "-framework",
+                "OpenGL"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Generated task by VS Code."
+        }
+    ]
+}

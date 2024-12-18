@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/tgliedt/Desktop/trinh/0_others/Learning/Practice/OpenGL/FirstProject",
+      "program": "/Users/tgliedt/Desktop/trinh/0_others/Learning/Practice/OpenGL/FirstProject/build/Debug/outDebug"
+    }
+  ]
+}

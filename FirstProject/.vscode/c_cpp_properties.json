@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "macos-clang-arm64",
+            "includePath": [
+                "${workspaceFolder}/../ExternalLibs/include",
+                "${workspaceFolder}/../ExternalLibs/include/GL",
+                "${workspaceFolder}/../ExternalLibs/include/GL/GLFW",
+                "/opt/homebrew/include",
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "${default}",
+            "cppStandard": "${default}",
+            "intelliSenseMode": "macos-clang-arm64",
+            "compilerArgs": [
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
