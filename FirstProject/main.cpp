@@ -1,12 +1,19 @@
+#include <stdlib.h>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <string.h>
 #include <iostream>
 
+
 const GLint WIDTH = 900, HEIGHT = 600;
 #define GL_SILENCE_DEPRECATION ;
 
-GLuint VAO, VBO, shader;
+GLuint VAO, VBO, shader, uniformXMove;
+
+bool direction = true;
+float triOffset = 0.0f;
+float triMaxoffset = 0.7f;
+float triIncrement = 0.005f;
 
 // Vertex Shader
 static const char* vShader = "                                  \n\
@@ -14,9 +21,11 @@ static const char* vShader = "                                  \n\
                                                                 \n\
 layout (location = 0) in vec3 pos;                              \n\
                                                                 \n\
+uniform float xMove;                                            \n\
+                                                                \n\
 void main()                                                     \n\
 {                                                               \n\
-    gl_Position = vec4(0.4 * pos.x, 0.4 * pos.y, pos.z, 1.0);   \n\
+    gl_Position = vec4(0.4 * pos.x + xMove, 0.4 * pos.y, pos.z, 1.0);   \n\
 }";
 
 // Fragment shader
@@ -110,6 +119,8 @@ void CompileShaders() {
         printf("Error validating program: '%s'\n", eLog);
         return;
     }
+
+    uniformXMove = glGetUniformLocation(shader,"xMove");
 }
 
 int main() {
@@ -173,11 +184,24 @@ int main() {
         // Get + Handlge user input events
         glfwPollEvents();
 
+        if (direction)
+        {
+            triOffset += triIncrement;
+        }
+        else {
+            triOffset -= triIncrement;
+        }
+
+        if (abs(triOffset) >= triMaxoffset) {
+            direction = !direction;
+        }
         // clear window
         glClearColor(0.0f, 0.7f, 0.5f, 0.4f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         glUseProgram(shader);
+
+        glUniform1f(uniformXMove, triOffset);
         glFlush();
 
         glBindVertexArray(VAO);
